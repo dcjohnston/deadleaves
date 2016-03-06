@@ -7,7 +7,8 @@ form
     div.col-md-5
       div.form-group
         label(for='intensity') Intensity
-        input(type='range', id='intensity', class='form-control', min=0, step=1E-7)
+        input(type='range', id='intensity', min=0, step=1E-7, onchange="intensity_val.value = value")
+        output(id='intensity_val')
   div.row
     div.col-md-5.col-md-offset-1
       div.form-group
