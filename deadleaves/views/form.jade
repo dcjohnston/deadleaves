@@ -1,26 +1,26 @@
-form
+form(method='post', action='/api/task')
   div.row
     div.col-md-5.col-md-offset-1
       div.form-group
         label(for='emoji') Emoji
-        input(type='text', id='emoji', class='emoji-picker form-control', placeholder='Choose an Emoji', maxlength=1)
+        input(type='text', id='emoji', name='emoji', class='emoji-picker form-control', placeholder='Choose an Emoji', maxlength=1)
     div.col-md-5
       div.form-group
         label(for='intensity') Intensity
-        input(type='range', id='intensity', min=0, step=1E-7, onchange="intensity_val.value = value")
+        input(type='range', id='intensity', name='intensity', min=0, step=1E-7, onchange="intensity_val.value = value")
         output(id='intensity_val')
   div.row
     div.col-md-5.col-md-offset-1
       div.form-group
         label(for='options') Options
-        select(multiple=true, id='options', class='form-control')
+        select(multiple=true, id='options', name='options', class='form-control')
           option(value='thing_1') Option 1
           option(value='thing_2') Option 2
           option(value='thing_3') Option 3
     div.col-md-5
       div.form-group
         label(for='image') Image
-        input(type='file', id='image', class='form-control', placeholder='Upload an Image', accept='image/*')
+        input(type='file', id='image', name='image', class='form-control', placeholder='Upload an Image', accept='image/*')
         img(id="selected-image", width='200', height='200')
   div.row
     div.col-md-2.col-md-offset-5
