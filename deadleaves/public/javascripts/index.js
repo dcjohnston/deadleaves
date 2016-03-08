@@ -10,12 +10,27 @@ $(function(){
 
     var reader = new FileReader();
     reader.onload = function() {
-      console.log(reader);
       thumbnail.src = reader.result;
     };
-    console.log(target);
     reader.readAsDataURL(target);
+  });
 
+  $('#app-form').submit(function(ev) {
+    var req = new FormData(this);
+
+    $.ajax({
+      data: req,
+      url: '/api/task',
+      type: 'POST',
+      contentType: false,
+      processData: false,
+      success: function (res) {
+        console.log(res);
+      }
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
+    return false;
   });
 });
-// http://stackoverflow.com/questions/14069421/show-an-image-preview-before-upload
