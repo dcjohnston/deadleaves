@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "grunt"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -16,5 +16,11 @@
     "multer": "~1.1.0",
     "serve-favicon": "~2.3.0",
     "svgutils": "^0.13.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-express": "^1.4.1",
+    "grunt-nodemon": "^0.4.1"
   }
 }

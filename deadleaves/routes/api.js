@@ -15,15 +15,18 @@ router.post('/task', upload.single('image'), function (req, res, next){
   var post = req.body,
       image = req.file,
       emojis = emojione.unicodeToImage(post.emoji),
-      emojiShorts = emojione.toShort(post.emoji).split('::'),
-      emojiId = emojis.match(/(.*\/assets\/svg\/([a-z, 0-9]*\.svg).*)+/)[2],
-      targetSvg = path.join(__dirname, '../node_modules/emojione/assets/svg', emojiId),
-      targetImage = path.join(__dirname, '../uploads', image.filename),
-      xyMap = Locations(emojiShorts);
+      emojishorts = emojione.toShort(post.emoji).split('::'),
+      emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g),
+      targetimage = path.join(__dirname, '../uploads', image.filename),
+      xymap = Locations(emojishorts);
 
-  var emojis = Svg.fromSvgDocument(targetSvg, function (e, svg) {
-    
-  });
+  var targetSvgs = emojiIds.map(function(name) {
+    return path.join(__dirname, '../node_modules/emojione/assets/svg', name);
+  })
+
+  // var emojis = Svg.fromSvgDocument(targetSvg, function (e, svg) {
+  //
+  // });
 
 });
 
