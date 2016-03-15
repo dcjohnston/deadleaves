@@ -4,7 +4,7 @@ function InversePowerCDF(alpha, xmin) {
     alpha = alpha();
   }
   return function(p) {
-    return Math.pow(alpha*xmin*Math.pow(p, -1/(alpha + 1)));
+    return alpha*xmin*Math.pow(p, -1/(alpha + 1));
   };
 }
 
