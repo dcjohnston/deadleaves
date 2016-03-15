@@ -1,5 +1,5 @@
 function InversePowerCDF(alpha, xmin) {
-  xmin = xmin || 10; //lol
+  xmin = xmin || .1; //lol
   if (typeof alpha === "function") {
     alpha = alpha();
   }
@@ -9,9 +9,7 @@ function InversePowerCDF(alpha, xmin) {
 }
 
 module.exports = function (emojiArray) {
-  return {
-    locations: emojiArray.map(function (e) {
-      return [Math.random(), Math.random(), InversePowerCDF(Math.random)(Math.random())];
-    })
-  };
+  return emojiArray.map(function (e) {
+    return [Math.random(), Math.random(), InversePowerCDF(Math.random)(Math.random())];
+  });
 };
