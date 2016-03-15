@@ -1,13 +1,13 @@
-var express = require('express');
-var multer = require('multer');
-var emojione = require('emojione')
-var fs = require('fs');
-var path = require('path');
-var router = express.Router();
-var Locations = require('../image_utils/image')
-var upload = multer({
-  dest: 'uploads/'
-});
+var express = require('express'),
+    multer = require('multer'),
+    emojione = require('emojione'),
+    path = require('path'),
+    router = express.Router(),
+    Locations = require('../image_utils/image'),
+    Svg = require('svgutils').Svg,
+    upload = multer({
+      dest: 'uploads/'
+    })
 
 emojione.imageType = 'svg';
 
@@ -21,7 +21,10 @@ router.post('/task', upload.single('image'), function (req, res, next){
       targetImage = path.join(__dirname, '../uploads', image.filename),
       xyMap = Locations(emojiShorts);
 
-  console.log(xyMap);
+  var emojis = Svg.fromSvgDocument(targetSvg, function (e, svg) {
+    
+  });
+
 });
 
 module.exports = router;
