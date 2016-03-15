@@ -18,7 +18,7 @@ router.post('/task', upload.single('image'), function (req, res, next){
       emojiId = emoji.match(/.*\/assets\/svg\/([a-z, 0-9]*\.svg).*/)[1],
       targetSvg = path.join(__dirname, '../node_modules/emojione/assets/svg', emojiId),
       targetImage = path.join(__dirname, '../uploads', image.filename)
-      processorAPI = imageUtils(post.emoji);
+      processorAPI = imageUtils(post.emoji.split(''));
 
   console.log(post, image);
 });
