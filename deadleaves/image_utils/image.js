@@ -10,9 +10,8 @@ function InversePowerCDF(alpha, xmin) {
 
 module.exports = function (emojiArray) {
   return {
-    scales: emojiArray.map(InversePowerCDF(Math.random)),
     locations: emojiArray.map(function (e) {
-      return [Math.random(), Math.random()];
+      return [Math.random(), Math.random(), InversePowerCDF(Math.random)(Math.random())];
     })
   };
 };
