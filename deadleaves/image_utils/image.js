@@ -8,8 +8,18 @@ function InversePowerCDF(alpha, xmin) {
   };
 }
 
-module.exports = function (emojiArray) {
-  return emojiArray.map(function (e) {
-    return [Math.random(), Math.random(), InversePowerCDF(Math.random)(Math.random())];
-  });
+module.exports = function (emojiClassCount, alpha) {
+  var positions = [],
+      emojiCount = Math.pow(alpha,-1)*Math.pow(10,2.6987);
+
+  for (var i = 0; i < emojiCount; i++) {
+    //x, y, scaling factor, emoji index
+    positions.push([
+      Math.random(),
+      Math.random(),
+      InversePowerCDF(alpha)(Math.random()),
+      Math.floor(Math.random()*emojiClassCount)
+    ]);
+  }
+  return positions;
 };

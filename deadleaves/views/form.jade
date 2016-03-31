@@ -7,7 +7,7 @@ form(method='post', action='/api/task', enctype='multipart/form-data', id='app-f
     div.col-md-5
       div.form-group
         label(for='intensity') Intensity
-        input(type='range', id='intensity', name='intensity', min=0, step=1E-7, onchange="intensity_val.value = value")
+        input(type='range', id='intensity', name='intensity', min=1E-2, max=.5, step=1E-2, onchange="intensity_val.value = value")
         output(id='intensity_val')
   div.row
     div.col-md-5.col-md-offset-1
