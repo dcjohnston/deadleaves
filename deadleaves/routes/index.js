@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Make some emoji deadleaves images!' });
+  res.render('index', {
+    title: 'Make some emoji deadleaves images!'
+  });
 });
 
 module.exports = router;

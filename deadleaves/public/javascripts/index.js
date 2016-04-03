@@ -1,18 +1,18 @@
-$(function(){
+$(function() {
   $('input.emoji-picker').emojiPicker({
     height: '300px',
     width: '300px'
   });
 
-  $('input#intensity').change(function (ev) {
-      var v = $('input#intensity').val();
-      $('output#intensity-val').val(v);
+  $('input#intensity').change(function(ev) {
+    var v = $('input#intensity').val();
+    $('output#intensity-val').val(v);
   });
 
   $('input#intensity').trigger('change');
 
 
-  $('#image').change(function(ev){
+  $('#image').change(function(ev) {
     var target = this.files[0];
     var thumbnail = $('#selected-image')[0];
 
@@ -32,7 +32,7 @@ $(function(){
       type: 'POST',
       contentType: false,
       processData: false,
-      success: function (res) {
+      success: function(res) {
         $('img#result-preview').attr('src', 'data:image/png;base64,' + res);
         $('a#download-result').attr('href', 'data:image/png;base64,' + res);
         // var reader = new FileReader();
