@@ -6,10 +6,13 @@ var express = require('express'),
   router = express.Router(),
   Parametrize = require('../image_utils/parametrize'),
   PythonShell = require('python-shell'),
+  pn = require('pn'),
+  svg2png = require('svg2png'),
   ScaleImage = require('../image_utils/scale_svg');
-  // upload = multer({
-  //   dest: 'uploads/'
-  // })
+
+// upload = multer({
+//   dest: 'uploads/'
+// })
 
 emojione.imageType = 'svg';
 
@@ -21,18 +24,16 @@ router.post('/task', function(req, res, next) {
     emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g);
 
   var cliArguments = {
-    mode: '',
-    scriptPath: path.join(__dirname, '../python_scripts',
+    mode: 'text',
+    scriptPath: path.join(__dirname, '../python_scripts'),
+  };
 
-  }
-
-  PythonShell.run('emojify.py', cliArguments, function (err, results) {
-    if (err) {
-      throw err;
-    } else {
-      //encoding binary -> utf-8 string
-      var processedImage = fs.readFile(results, function (err, data) {
-        var base64data = new Buffer(data).toString('base64');
+  PythonShell.run('emojify.py', cliArguments, function(err, results) {
+    //encoding binary -> utf-8 string
+    pn.readFile(results)
+      .then(svg2png)
+      .then(function(buffer) {
+        var base64data = buffer.toString('base64');
         res.header({
             'Content-Type': 'application/json'
           })
@@ -41,10 +42,7 @@ router.post('/task', function(req, res, next) {
             name: 'emoji_pile.png'
           });
       });
-
-    }
   });
-
 });
 
 module.exports = router;
