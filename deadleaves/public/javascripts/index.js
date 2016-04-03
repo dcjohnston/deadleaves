@@ -4,6 +4,15 @@ $(function(){
     width: '300px'
   });
 
+  function updateSlider(ev) {
+    var v = $('input#intensity').val();
+    $('output#intensity-val').val(v);
+  }
+
+  $('input#intensity').change(updateSlider);
+  updateSlider();
+
+
   $('#image').change(function(ev){
     var target = this.files[0];
     var thumbnail = $('#selected-image')[0];
