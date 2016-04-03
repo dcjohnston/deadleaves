@@ -5,7 +5,7 @@ var express = require('express'),
   path = require('path'),
   router = express.Router(),
   Parametrize = require('../image_utils/parametrize'),
-  ScaleImage = require('../image_utils/scale_svg'),
+  ScaleImage = require('../image_utils/scale_svg');
   // upload = multer({
   //   dest: 'uploads/'
   // })
