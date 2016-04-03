@@ -6,7 +6,7 @@ var express = require('express'),
   router = express.Router(),
   Parametrize = require('../image_utils/parametrize'),
   PythonShell = require('python-shell'),
-  pn = require('pn'),
+  pn = require('pn/fs'),
   svg2png = require('svg2png'),
   ScaleImage = require('../image_utils/scale_svg');
 
@@ -25,6 +25,7 @@ router.post('/task', function(req, res, next) {
   };
 
   PythonShell.run('emojify.py', cliArguments, function(err, results) {
+    console.log(err, results);
     //encoding binary -> utf-8 string
     pn.readFile(results)
       .then(svg2png)
