@@ -35,10 +35,13 @@ router.post('/task', upload.single('image'), function(req, res, next) {
   //   });
   // });
 
-  var image = fs.readFileSync(targetimage);
-  var base64data = new Buffer(image).toString('base64');
+  var result = fs.readFileSync(targetimage);
+  var base64data = new Buffer(result).toString('base64');
   //encoding binary -> utf-8 string
-  res.send(base64data);
+  res.send({
+    image: base64data,
+    name: image.originalname
+  });
   // var emojis = Svg.fromSvgDocument(targetSvg, function (e, svg) {
   //
   // });
