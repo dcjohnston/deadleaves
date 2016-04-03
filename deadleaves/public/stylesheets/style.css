@@ -114,3 +114,7 @@ header .container.main-container {
 section {
   padding-top: 50px;
 }
+
+.hidden {
+  opacity: 0;
+}

@@ -12,7 +12,6 @@ $(function() {
 
   $('input#intensity').trigger('change');
 
-
   $('#image').change(function(ev) {
     var target = this.files[0];
     var thumbnail = $('#selected-image')[0];
@@ -35,16 +34,12 @@ $(function() {
       contentType: false,
       processData: false,
       success: function(res) {
+        $('div.form-container').addClass('animated slideOutLeft')
+        $('div.container.result-preview').fadeIn();
         $('img#result-preview').attr('src', 'data:image/png;base64,' + res.image);
         $('a#download-result')
           .attr('href', 'data:image/png;base64,' + res.image)
           .attr('download', 'emoji_' + res.name);
-        // var reader = new FileReader();
-        // var blob = new Blob(res.body);
-        // reader.onload = function() {
-        //   $('img#result-preview')[0].src = reader.result;
-        // }
-        // reader.readAsBinaryString(res);
       }
     });
 

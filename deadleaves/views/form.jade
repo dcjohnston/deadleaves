@@ -1,5 +1,5 @@
 section(id='form')
-  div.container
+  div.container.form-container
     div.row
       div.col-lg-12.text-center
         h2 Create!
@@ -30,7 +30,12 @@ section(id='form')
             div.form-group.col-xs-2.col-xs-offset-5
               button(type='submit', class='btn btn-success btn-lg') Make!
           hr.start-light
-    div.row.result-preview
+  div.container.result-preview.hidden
+    div.row
+      div.col-lg-12.text-center
+        h2 Review & Download
+        hr.start-primary
+    div.row
       div.col-md-2.col-md-offset-5
         div
           a(id='download-result') Download
