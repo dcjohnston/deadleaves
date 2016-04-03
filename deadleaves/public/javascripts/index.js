@@ -26,6 +26,7 @@ $(function(){
       processData: false,
       success: function (res) {
         $('img#result-preview').attr('src', 'data:image/png;base64,' + res);
+        $('a#download-result').attr('href', 'data:image/png;base64,' + res);
         // var reader = new FileReader();
         // var blob = new Blob(res.body);
         // reader.onload = function() {
