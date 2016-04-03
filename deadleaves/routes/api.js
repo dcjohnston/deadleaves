@@ -23,10 +23,12 @@ router.post('/task', function(req, res, next) {
 
   var cliArguments = {
     mode: 'text',
-    scriptPath: path.join(__dirname, '../python_scripts'),
+    scriptPath: path.join(__dirname, '../python'),
+    pythonOptions: ['-o'],
+    args: [alpha, emojiIds.join(',')]
   };
 
-  PythonShell.run('emojify.py', cliArguments, function(err, results) {
+  PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
     //encoding binary -> utf-8 string
     pn.readFile(results)
       .then(svg2png)
