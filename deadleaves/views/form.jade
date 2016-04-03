@@ -3,13 +3,13 @@ section(id='form')
     div.row
       div.col-lg-12.text-center
         h2 Create!
-        h4.start-primary
+        hr.start-primary
     div.row
       div.col-lg-8.col-lg-offset-2
         form(method='post', action='/api/task', enctype='multipart/form-data', id='app-form')
           div.row.control-group
             div.form-group.col-lg-3.col-lg-offset-1
-              label(for='emoji') Emoji
+              label(for='emoji') Emojis
               input(type='text', id='emoji', name='emoji', class='emoji-picker', placeholder='Choose some emojis', required='true')
             div.form-group.col-lg-3.col-lg-offset-1.controls
               label(for='intensity') Intensity
@@ -29,9 +29,9 @@ section(id='form')
           div.row
             div.form-group.col-xs-2.col-xs-offset-5
               button(type='submit', class='btn btn-success btn-lg') Make!
-          div.row.result-preview
-            div.col-md-2.col-md-offset-5
-              h4 Preview image.
-              div
-                a(id='download-result') Download
-              img(id="result-preview", height='300', width='300')
+          hr.start-light
+    div.row.result-preview
+      div.col-md-2.col-md-offset-5
+        div
+          a(id='download-result') Download
+          img(id="result-preview", height='300', width='300')
