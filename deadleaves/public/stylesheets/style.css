@@ -166,3 +166,7 @@ div.slick-track, div.slick-container, div.slick-slide {
   outline: none;
   border: none;
 }
+
+a.inline-a {
+  margin: 0 !important;
+}
