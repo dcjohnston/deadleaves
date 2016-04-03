@@ -12,17 +12,17 @@ $(function() {
 
   $('input#intensity').trigger('change');
 
-  $('#image').change(function(ev) {
-    var target = this.files[0];
-    var thumbnail = $('#selected-image')[0];
-
-    var reader = new FileReader();
-    reader.onload = function() {
-      thumbnail.src = reader.result;
-    };
-    reader.readAsDataURL(target);
-    $(this).parent().addClass('has-success');
-  });
+  // $('#image').change(function(ev) {
+  //   var target = this.files[0];
+  //   var thumbnail = $('#selected-image')[0];
+  //
+  //   var reader = new FileReader();
+  //   reader.onload = function() {
+  //     thumbnail.src = reader.result;
+  //   };
+  //   reader.readAsDataURL(target);
+  //   $(this).parent().addClass('has-success');
+  // });
 
   function setResult() {
     $('button.progress-button:first-of-type').removeClass('active');
