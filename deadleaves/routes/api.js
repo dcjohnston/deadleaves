@@ -17,7 +17,9 @@ router.post('/task', function(req, res, next) {
     emojis = emojione.unicodeToImage(post.emoji),
     emojishorts = emojione.toShort(post.emoji).split('::'),
     alpha = post.intensity,
-    emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g);
+    emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g).map(function (id) {
+      return path.join(__dirname, '../node_modules/emojione/assets/svg', eName);
+    });
 
   var cliArguments = {
     mode: 'text',
@@ -25,7 +27,6 @@ router.post('/task', function(req, res, next) {
   };
 
   PythonShell.run('emojify.py', cliArguments, function(err, results) {
-    console.log(err, results);
     //encoding binary -> utf-8 string
     pn.readFile(results)
       .then(svg2png)
