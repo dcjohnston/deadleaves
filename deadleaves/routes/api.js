@@ -35,7 +35,7 @@ router.post('/task', upload.single('image'), function (req, res, next){
   //   });
   // });
 
-  var image = fs.readFileSync(path.join(__dirname, '../node_modules/emojione/assets/png/00a9.png'));
+  var image = fs.readFileSync(targetimage);
   var base64data = new Buffer(image).toString('base64');
   //encoding binary -> utf-8 string
   res.send(base64data);

@@ -26,5 +26,6 @@ form(method='post', action='/api/task', enctype='multipart/form-data', id='app-f
     div.col-md-2.col-md-offset-5
         button(type='submit', class='btn btn-default') Make!
   div.row.result-preview
-    h4= Preview
-    img(id="result-preview", width='200', height='200')
+    div.col-md-2.col-md-offset-5
+      h4= Preview
+      img(id="result-preview")
