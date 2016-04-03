@@ -10,10 +10,6 @@ var express = require('express'),
   svg2png = require('svg2png'),
   ScaleImage = require('../image_utils/scale_svg');
 
-// upload = multer({
-//   dest: 'uploads/'
-// })
-
 emojione.imageType = 'svg';
 
 router.post('/task', function(req, res, next) {
