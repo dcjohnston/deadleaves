@@ -1,5 +1,3 @@
-# Takes in a list of filenames and 
-
 import numpy as np
 import sys
 import os
@@ -56,7 +54,7 @@ def parseInput():
 		size = (int(options[sizeIndex+1]),int(options[sizeIndex+2]))
 	except ValueError:
 		size = (300,300)
-	
+
 	try:
 		outIndex = options.index('out')
 		outDir = options[outIndex+1]
