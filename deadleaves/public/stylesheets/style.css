@@ -115,6 +115,37 @@ section {
   padding-top: 50px;
 }
 
-.hidden {
-  opacity: 0;
+div.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.result-container a {
+  display: block;
+}
+div.result-container img {
+  display: block;
+}
+
+div.progress-button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+button.progress-button {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 2em;
+  background: none;
+  border: 1px solid black;
+  outline: none;
+  cursor: default;
+}
+
+button.progress-button.active {
+  box-shadow: 0px 0px 40px 0px #18bc9c;
 }

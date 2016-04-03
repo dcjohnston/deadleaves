@@ -34,8 +34,8 @@ $(function() {
       contentType: false,
       processData: false,
       success: function(res) {
-        $('div.form-container').addClass('animated slideOutLeft')
-        $('div.container.result-preview').fadeIn();
+        $('div.form-container').addClass('animated slideOutLeft').addClass('hidden');
+        $('div.container.result-preview').addClass('animated slideInRight').removeClass('hidden');
         $('img#result-preview').attr('src', 'data:image/png;base64,' + res.image);
         $('a#download-result')
           .attr('href', 'data:image/png;base64,' + res.image)
@@ -47,4 +47,5 @@ $(function() {
     ev.stopPropagation();
     return false;
   });
+
 });
