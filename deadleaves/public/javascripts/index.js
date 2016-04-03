@@ -24,6 +24,22 @@ $(function() {
     $(this).parent().addClass('has-success');
   });
 
+  function setResult() {
+    $('button.progress-button:first-of-type').removeClass('active');
+    $('button.progress-button:last-of-type').addClass('active');
+    $('div.form-container').addClass('animated slideOutLeft').addClass('hidden');
+    $('div.container.result-preview').addClass('animated slideInRight').removeClass('hidden');
+  }
+
+  function setInitial() {
+    $('button.progress-button:first-of-type').addClass('active');
+    $('button.progress-button:last-of-type').removeClass('active');
+    $('div.form-container').addClass('animated slideInRight').removeClass('hidden');
+    $('div.container.result-preview').addClass('animated slideOutRight hidden');
+  }
+
+  $('button.progress-button:first-of-type').click(setInitial);
+
   $('#app-form').submit(function(ev) {
     var req = new FormData(this);
 
@@ -34,12 +50,11 @@ $(function() {
       contentType: false,
       processData: false,
       success: function(res) {
-        $('div.form-container').addClass('animated slideOutLeft').addClass('hidden');
-        $('div.container.result-preview').addClass('animated slideInRight').removeClass('hidden');
         $('img#result-preview').attr('src', 'data:image/png;base64,' + res.image);
         $('a#download-result')
           .attr('href', 'data:image/png;base64,' + res.image)
           .attr('download', 'emoji_' + res.name);
+        setResult();
       }
     });
 

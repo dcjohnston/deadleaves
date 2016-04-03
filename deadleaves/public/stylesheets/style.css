@@ -149,3 +149,7 @@ button.progress-button {
 button.progress-button.active {
   box-shadow: 0px 0px 40px 0px #18bc9c;
 }
+
+ul.my-nav {
+  margin-top: 20px;
+}

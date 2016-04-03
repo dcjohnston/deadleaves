@@ -8,6 +8,7 @@ html
     link(rel='stylesheet', href='/stylesheets/freelancer.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/animate.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
     script(type='text/javascript', src='/bower_components/jquery/dist/jquery.min.js')
     script(type='text/javascript', src='/bower_components/jquery-emoji-picker/js/jquery.emojipicker.js')
     script(type='text/javascript', src='/bower_components/jquery-emoji-picker/js/jquery.emojis.js')
@@ -17,5 +18,29 @@ html
       div.container
         div.navbar-header.page-scroll
           h3.navbar-brand= title
+        ul.nav.navbar-nav.navbar-right.my-nav
+          li
+            a(href='/') Home
+          li
+            a(href='/about') About
 
     block content
+
+    footer.text-center
+      div.footer-above
+        div.container
+          div.row
+            div.footer-col.col-md-6
+              h3 Source
+              ul.list-inline
+                li
+                  a.btn-social.btn-outline(href="https://github.com/dcjohnston/deadleaves")
+                    i.fa.fa-fw.fa-github
+            div.footer-col.col-md-6
+              h3 Creators
+              p Derek & Charles are poor college students.
+      div.footer-below
+        div.container
+          div.row
+            div.col-lg-12
+              Copyright &copy; Emoji Dead Leaves 2016
