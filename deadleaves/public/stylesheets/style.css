@@ -153,3 +153,11 @@ button.progress-button.active {
 ul.my-nav {
   margin-top: 20px;
 }
+
+div.panel-body.about-text p {
+  font-size: .9em;
+}
+
+div.panel-body.about-text *:not(h4) {
+  margin-left: 20px;
+}
