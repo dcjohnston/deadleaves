@@ -7,6 +7,7 @@ $(function() {
   $('input#intensity').change(function(ev) {
     var v = $('input#intensity').val();
     $('output#intensity-val').val(v);
+    $('#input#intensity').parent().addClass('has-success');
   });
 
   $('input#intensity').trigger('change');
@@ -21,6 +22,7 @@ $(function() {
       thumbnail.src = reader.result;
     };
     reader.readAsDataURL(target);
+    $(this).parent().addClass('has-success');
   });
 
   $('#app-form').submit(function(ev) {

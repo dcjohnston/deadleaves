@@ -1,32 +1,37 @@
-form(method='post', action='/api/task', enctype='multipart/form-data', id='app-form')
-  div.row
-    div.col-md-5.col-md-offset-1
-      div.form-group
-        label(for='emoji') Emoji
-        input(type='text', id='emoji', name='emoji', class='emoji-picker form-control', placeholder='Choose an Emoji')
-    div.col-md-5
-      div.form-group
-        label(for='intensity') Intensity
-        input(type='range', id='intensity', name='intensity', min=1E-2, max=.5, step=1E-2)
-        output(id='intensity-val')
-  div.row
-    div.col-md-5.col-md-offset-1
-      div.form-group
-        label(for='options') Options
-        select(multiple=true, id='options', name='options', class='form-control')
-          option(value='thing_1') Option 1
-          option(value='thing_2') Option 2
-          option(value='thing_3') Option 3
-    div.col-md-5
-      div.form-group
-        label(for='image') Image
-        input(type='file', id='image', name='image', class='form-control', placeholder='Upload an Image', accept='image/*')
-        img(id="selected-image", width='200', height='200')
-  div.row
-    div.col-md-2.col-md-offset-5
-        button(type='submit', class='btn btn-default') Make!
-  div.row.result-preview
-    div.col-md-2.col-md-offset-5
-      h4 Preview image.
-      a(id='download-result') Download
-      img(id="result-preview", height='300', width='300')
+section(id='form')
+  div.container
+    div.row
+      div.col-lg-12.text-center
+        h2 Create!
+        h4.start-primary
+    div.row
+      div.col-lg-8.col-lg-offset-2
+        form(method='post', action='/api/task', enctype='multipart/form-data', id='app-form')
+          div.row.control-group
+            div.form-group.col-lg-3.col-lg-offset-1
+              label(for='emoji') Emoji
+              input(type='text', id='emoji', name='emoji', class='emoji-picker', placeholder='Choose some emojis', required='true')
+            div.form-group.col-lg-3.col-lg-offset-1.controls
+              label(for='intensity') Intensity
+              input(type='range', id='intensity', name='intensity', min=1E-2, max=.5, step=1E-2, class='form-control')
+              output(id='intensity-val')
+            div.form-group.col-lg-3.col-lg-offset-1.controls
+              label(for='options') Options
+              select(multiple=true, id='options', name='options', class='form-control')
+                option(value='thing_1') Option 1
+                option(value='thing_2') Option 2
+                option(value='thing_3') Option 3
+          div.row.control-group
+            div.form-group.col-lg-6.col-lg-offset-3.controls
+              label(for='image') Upload Image (Preview)
+              input(type='file', id='image', required='true', name='image', class='form-control', placeholder='Upload an Image', accept='image/*')
+              img(id="selected-image", width='100%', height='200px')
+          div.row
+            div.form-group.col-xs-2.col-xs-offset-5
+              button(type='submit', class='btn btn-success btn-lg') Make!
+          div.row.result-preview
+            div.col-md-2.col-md-offset-5
+              h4 Preview image.
+              div
+                a(id='download-result') Download
+              img(id="result-preview", height='300', width='300')

@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
@@ -106,4 +105,12 @@ input[type=range]::-ms-fill-upper {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
+}
+
+header .container.main-container {
+  padding-top: 100px;
+}
+
+section {
+  padding-top: 50px;
 }

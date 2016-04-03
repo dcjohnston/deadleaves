@@ -1,10 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  div.container-fluid
-    div.row
-      div.col-md-8.col-md-offset-2
-        div.panel.panel-default
-          div.panel-body
-            include ./form.jade
+  header
+    div.container.main-container
+      div.row
+        div.col-lg-12
+          img.img-responsive(src="/images/1f47b.png")
+          div.intro-text
+            span.name= title
+            hr.start-light
+            span.skills Create images using dead leaves image processing and your favorite emojis.
+  include ./form.jade
