@@ -27,28 +27,25 @@ $(function() {
   function setResult() {
     $('button.progress-button:first-of-type').removeClass('active');
     $('button.progress-button:last-of-type').addClass('active');
-    $('div.form-container').addClass('animated slideOutLeft').addClass('hidden');
-    $('div.container.result-preview').addClass('animated slideInRight').removeClass('hidden');
+    $('div.slick-container').slick('slickGoTo', 1);
   }
 
   function setInitial() {
     $('button.progress-button:first-of-type').addClass('active');
     $('button.progress-button:last-of-type').removeClass('active');
-    $('div.form-container').addClass('animated slideInRight').removeClass('hidden');
-    $('div.container.result-preview').addClass('animated slideOutRight hidden');
+    $('div.slick-container').slick('slickGoTo', 0);
   }
 
   $('button.progress-button:first-of-type').click(setInitial);
 
   $('#app-form').submit(function(ev) {
-    var req = new FormData(this);
-
-    $.ajax({
+    var req = $(this).serializeArray().reduce(function (data, field) {
+      data[field.name] = field.value;
+      return data;
+    }, {});
+    $.post({
       data: req,
       url: '/api/task',
-      type: 'POST',
-      contentType: false,
-      processData: false,
       success: function(res) {
         $('img#result-preview').attr('src', 'data:image/png;base64,' + res.image);
         $('a#download-result')
@@ -61,6 +58,11 @@ $(function() {
     ev.preventDefault();
     ev.stopPropagation();
     return false;
+  });
+
+  $('div.slick-container').slick({
+    draggable: false,
+    arrows: false,
   });
 
 });
