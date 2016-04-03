@@ -4,13 +4,12 @@ $(function(){
     width: '300px'
   });
 
-  function updateSlider(ev) {
-    var v = $('input#intensity').val();
-    $('output#intensity-val').val(v);
-  }
+  $('input#intensity').change(function (ev) {
+      var v = $('input#intensity').val();
+      $('output#intensity-val').val(v);
+  });
 
-  $('input#intensity').change(updateSlider);
-  updateSlider();
+  $('input#intensity').trigger('change');
 
 
   $('#image').change(function(ev){
