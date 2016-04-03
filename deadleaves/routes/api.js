@@ -1,10 +1,11 @@
 var express = require('express'),
     multer = require('multer'),
+    fs = require('fs'),
     emojione = require('emojione'),
     path = require('path'),
     router = express.Router(),
-    Locations = require('../image_utils/image'),
-    Svg = require('svgutils').Svg,
+    Parametrize = require('../image_utils/parametrize'),
+    ScaleImage = require('../image_utils/scale_svg'),
     upload = multer({
       dest: 'uploads/'
     })
@@ -19,15 +20,25 @@ router.post('/task', upload.single('image'), function (req, res, next){
       alpha = post.intensity,
       emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g),
       targetimage = path.join(__dirname, '../uploads', image.filename),
-      xymap = Locations(emojishorts.length, alpha);
+      xymap = Parametrize(emojishorts.length, alpha);
 
-  var targetSvgs = emojiIds.map(function(name) {
-    return path.join(__dirname, '../node_modules/emojione/assets/svg', name);
-  });
+  // //transform emoji index into url to upstream svg
+  xymap = xymap.map(function (parameters) {
+    var eName = emojiIds[parameters[3]];
+    parameters[3] = path.join(__dirname, '../node_modules/emojione/assets/svg', eName);
+    return parameters;
+  })
 
-  console.log(xymap);
+  //.map(function (parameters) {
+  //   ScaleImage(parameters[3], parameters[2], function (svg) {
+  //     console.log(svg);
+  //   });
+  // });
 
-  //
+  var image = fs.readFileSync(path.join(__dirname, '../node_modules/emojione/assets/png/00a9.png'));
+  var base64data = new Buffer(image).toString('base64');
+  //encoding binary -> utf-8 string
+  res.send(base64data);
   // var emojis = Svg.fromSvgDocument(targetSvg, function (e, svg) {
   //
   // });

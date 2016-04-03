@@ -3,7 +3,7 @@ form(method='post', action='/api/task', enctype='multipart/form-data', id='app-f
     div.col-md-5.col-md-offset-1
       div.form-group
         label(for='emoji') Emoji
-        input(type='text', id='emoji', name='emoji', class='emoji-picker form-control', placeholder='Choose an Emoji', maxlength=1)
+        input(type='text', id='emoji', name='emoji', class='emoji-picker form-control', placeholder='Choose an Emoji')
     div.col-md-5
       div.form-group
         label(for='intensity') Intensity
@@ -25,3 +25,6 @@ form(method='post', action='/api/task', enctype='multipart/form-data', id='app-f
   div.row
     div.col-md-2.col-md-offset-5
         button(type='submit', class='btn btn-default') Make!
+  div.row.result-preview
+    h4= Preview
+    img(id="result-preview", width='200', height='200')

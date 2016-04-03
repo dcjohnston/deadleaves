@@ -25,7 +25,13 @@ $(function(){
       contentType: false,
       processData: false,
       success: function (res) {
-        console.log(res);
+        $('img#result-preview').attr('src', 'data:image/png;base64,' + res);
+        // var reader = new FileReader();
+        // var blob = new Blob(res.body);
+        // reader.onload = function() {
+        //   $('img#result-preview')[0].src = reader.result;
+        // }
+        // reader.readAsBinaryString(res);
       }
     });
 
