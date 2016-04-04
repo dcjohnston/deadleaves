@@ -48,9 +48,9 @@ $(function() {
       url: '/api/task',
       success: function(res) {
         $('img#result-preview').attr('src', '/preview/' + res.preview);
-        // $('a#download-result')
-        //   .attr('href', 'data:image/png;base64,' + res.preview)
-        //   .attr('download', 'emoji_' + res.name);
+        $('a#download-result')
+          .attr('href', '/preview/' + res.preview)
+          .attr('download', 'emoji_' + res.preview);
         setResult();
       }
     });
