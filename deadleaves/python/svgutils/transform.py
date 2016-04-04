@@ -116,7 +116,7 @@ class SVGFigure(object):
 
 
     def save(self, fname):
-        out=etree.tostring(self.root, xml_declaration=True,
+        out=etree.tostring(self.root,xml_declaration=True,
                 standalone=True,pretty_print=True)
         fid = open(fname, 'wb')
         fid.write(out)

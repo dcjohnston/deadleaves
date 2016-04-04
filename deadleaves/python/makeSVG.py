@@ -3,7 +3,9 @@ import sys
 import os
 import string
 import svgutils.transform as sg
-from collections import namedtuple
+import shutil
+
+header = "<?xml version='1.0' encoding='utf-8' standalone='yes'?>\n"
 
 def main():
 	"""handles command-line input, generates svg file of scaledEmojis,
@@ -23,10 +25,23 @@ def main():
 	fig.append(scaledEmojis)
 	outFileID = randomID()
 
-	outFilePath = os.path.join(wd,outDir,outFileID+'.svg')
-	fig.save(outFilePath)
+	outFilePath = os.path.join(wd,outDir,outFileID)
+	tempOutFile = outFilePath+'_tmp.svg'
+	outFile = outFilePath+'.svg'
+	fig.save(tempOutFile)
 
-	print(outFilePath)
+	#need to deal with incorrect header
+	#this is a bit of a hack job
+	with open(tempOutFile,'r') as from_file:
+		with open(outFile,'w') as to_file:
+			#answer from StackO/14947238
+			from_file.readline() # and discard
+			to_file.write(header)
+			shutil.copyfileobj(from_file, to_file)
+
+	os.remove(tempOutFile)
+
+	print(outFile)
 
 def parseInput():
 	"""there are three keywords:
