@@ -24,15 +24,19 @@ router.post('/task', function(req, res, next) {
   var cliArguments = {
     mode: 'text',
     scriptPath: path.join(__dirname, '../python'),
-    args: ['-i', alpha, '-e', emojiIds.join(' '), '-o', 'outDir', outputDir, 'size 512 512']
+    args: ['-i', alpha, '-e'].concat(emojiIds).concat(['-o', 'outDir', outputDir, 'size 512 512'])
   };
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
     //encoding binary -> utf-8 string
+    console.log(arguments);
     fs.readFile(results[0], function(err, data) {
-      var buffer = svg2png.sync(data);
-      console.log(buffer);
+      var buffer = svg2png.sync(data, {
+        width: 512,
+        height: 512
+      });
       var base64data = buffer.toString('base64');
+      console.log(base64data);
       res.header({
           'Content-Type': 'application/json'
         })
