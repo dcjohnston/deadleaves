@@ -29,14 +29,13 @@ router.post('/task', function(req, res, next) {
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
     //encoding binary -> utf-8 string
-    console.log(arguments);
     fs.readFile(results[0], function(err, data) {
       var buffer = svg2png.sync(data, {
         width: 512,
         height: 512
       });
+      fs.writeFile('./dest.png', buffer);
       var base64data = buffer.toString('base64');
-      console.log(base64data);
       res.header({
           'Content-Type': 'application/json'
         })
