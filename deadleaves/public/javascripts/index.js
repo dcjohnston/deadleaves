@@ -47,7 +47,9 @@ $(function() {
       data: req,
       url: '/api/task',
       success: function(res) {
-        $('img#result-preview').attr('src', '/preview/' + res.preview);
+        window.setTimeout(function () {
+          $('object#result-preview').attr('data', '/preview/' + res.preview);
+        }, 500);
         $('a#download-result')
           .attr('href', '/preview/' + res.preview)
           .attr('download', 'emoji_' + res.preview);
