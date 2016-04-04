@@ -7,6 +7,7 @@ var express = require('express'),
   Parametrize = require('../image_utils/parametrize'),
   PythonShell = require('python-shell'),
   svg2png = require('svg2png'),
+  streamifier = require('streamifier'),
   ScaleImage = require('../image_utils/scale_svg');
 
 emojione.imageType = 'svg';
@@ -29,29 +30,20 @@ router.post('/task', function(req, res, next) {
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
     fs.readFile(results[0], function(e, d) {
-      console.log("converting", d.length);
-      res.header({
-          'Content-Type': 'application/json',
+      svg2png(d, {
+          width: 512,
+          height: 512
         })
-        .send({
-          'preview': path.basename(results[0])
-        });
-      // svg2png(d, {
-      //     width: 128,
-      //     height: 128
-      //   })
-      //   .then(function(e, d) {
-      //     var target = path.join(__dirname, '../out', path.basename(results[0]).replace('.svg', '.png'));
-      //     fs.createWriteStream(target)
-      //       .write(d)
-      //       end();
-      //     res.header({
-      //         'Content-Type': 'application/json',
-      //       })
-      //       .send({
-      //         'preview': path.basename(target)
-      //       });
-      //   })
+        .then(function(buffer) {
+          res.header({
+              'Content-Type': 'application/json',
+            })
+            .send({
+              'encodedUri': 'data:image/png;base64,' + buffer.toString('base64'),
+              'name': path.basename(results[0]).replace('.svg', '')
+            });
+          fs.unlink(results[0]);
+        })
     });
   });
 });

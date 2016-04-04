@@ -21,6 +21,8 @@
     "pn": "^1.0.0",
     "python-shell": "^0.4.0",
     "serve-favicon": "~2.3.0",
+    "stream-buffers": "^3.0.0",
+    "streamifier": "^0.1.1",
     "svg2png": "^3.0.0",
     "svgutils": "^0.13.5",
     "xmldom": "^0.1.22"

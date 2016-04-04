@@ -47,12 +47,10 @@ $(function() {
       data: req,
       url: '/api/task',
       success: function(res) {
-        window.setTimeout(function () {
-          $('object#result-preview').attr('data', '/preview/' + res.preview);
-        }, 500);
+        $('img#result-preview').attr('src', res.encodedUri);
         $('a#download-result')
-          .attr('href', '/preview/' + res.preview)
-          .attr('download', 'emoji_' + res.preview);
+          .attr('href', res.encodedUri)
+          .attr('download', 'emoji_' + res.name);
         setResult();
       }
     });
