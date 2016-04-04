@@ -6,7 +6,6 @@ var express = require('express'),
   router = express.Router(),
   Parametrize = require('../image_utils/parametrize'),
   PythonShell = require('python-shell'),
-  pn = require('pn/fs'),
   svg2png = require('svg2png'),
   ScaleImage = require('../image_utils/scale_svg');
 
@@ -17,29 +16,34 @@ router.post('/task', function(req, res, next) {
     emojis = emojione.unicodeToImage(post.emoji),
     emojishorts = emojione.toShort(post.emoji).split('::'),
     alpha = post.intensity,
-    emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g).map(function (id) {
-      return path.join(__dirname, '../node_modules/emojione/assets/svg', eName);
-    });
+    emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g).map(function(id) {
+      return path.join(__dirname, '../node_modules/emojione/assets/svg', id);
+    }),
+    outputDir = path.join(__dirname, '../output');
 
   var cliArguments = {
     mode: 'text',
-    scriptPath: path.join(__dirname, '../python_scripts'),
+    scriptPath: path.join(__dirname, '../python'),
+    args: ['-i', alpha, '-e'].concat(emojiIds).concat(['-o', 'outDir', outputDir, 'size 512 512'])
   };
 
-  PythonShell.run('emojify.py', cliArguments, function(err, results) {
+  PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
     //encoding binary -> utf-8 string
-    pn.readFile(results)
-      .then(svg2png)
-      .then(function(buffer) {
-        var base64data = buffer.toString('base64');
-        res.header({
-            'Content-Type': 'application/json'
-          })
-          .send({
-            image: base64data,
-            name: 'emoji_pile.png'
-          });
+    fs.readFile(results[0], function(err, data) {
+      var buffer = svg2png.sync(data, {
+        width: 512,
+        height: 512
       });
+      fs.writeFile('./dest.png', buffer);
+      var base64data = buffer.toString('base64');
+      res.header({
+          'Content-Type': 'application/json'
+        })
+        .send({
+          image: base64data,
+          name: 'emoji_pile.png'
+        });
+    });
   });
 });
 
