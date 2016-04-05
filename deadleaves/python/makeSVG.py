@@ -98,25 +98,25 @@ def scaleEmojis(emojis,alpha=0.01,xmin=0.01,xLim=100,yLim=100):
 	"""given a list of svg elements, produces a list of ready-to-append
 	roots for svg images that have been scaled and translated appropriately"""
 	ipCDF = getInversePowerCDF(alpha,xmin)
-	
+
 	emojiRoots = [emoji.getroot() for emoji in emojis]
-	
+
 	for emojiRoot in emojiRoots:
 		scale = ipCDF(np.random.uniform())
 		emojiRoot.moveto(0,0,scale=1)
 		emojiRoot.moveto(0,0,scale=scale)
 		#emojiRoot.moveto(200,200,scale=scale)
-		locX = np.random.uniform(0,xLim)/scale; 
+		locX = np.random.uniform(0,xLim)/scale;
 		locY = np.random.uniform(0,yLim)/scale;
 		emojiRoot.moveto(locX,locY,scale=1)
 		emojiRoot.rotate(angle=np.random.uniform(0,360))
-		
+
 	return emojiRoots
 
 def getN(alpha):
 	"""assumes each element has diameter equal to scale, which isn't really true,
 	but the approximation actually works fairly well"""
-	return int((alpha**-1)*(10**3.6987))
+	return int((alpha**-1)*(10**2.6987))
 
 def getAlpha(intensity):
 	"""in case we decide to use a different scale for intensity"""
