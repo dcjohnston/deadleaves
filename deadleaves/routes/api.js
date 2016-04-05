@@ -16,14 +16,14 @@ router.post('/generate', function(req, res, next) {
   var post = req.body,
     emojis = emojione.unicodeToImage(post.emoji),
     emojishorts = emojione.toShort(post.emoji).split('::'),
-    alpha = post.intensity,
+    alpha = parseFloat(post.intensity),
     size = parseInt(post.size),
     emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g).map(function(id) {
       return path.join(__dirname, '../node_modules/emojione/assets/svg', id);
     }),
     outputDir = path.join(__dirname, '../out');
 
-  if (!post.intensity || (size > 1024) || !emojishorts.length) {
+  if ((!alpha || alpha < .05 || alpha> .5) || (size > 1024) || !emojishorts.length) {
     next({
       status: 400,
       message: 'Invalid Request'
