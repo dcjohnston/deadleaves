@@ -78,7 +78,6 @@ router.post('/rasterize', function(req, res, next) {
             'name': path.basename(target).replace('.svg', '')
           });
         fs.unlink(target, function (e) {
-          console.log(e)
         });
       })
   });
