@@ -39,19 +39,28 @@ $(function() {
   $('button.progress-button:first-of-type').click(setInitial);
 
   $('#app-form').submit(function(ev) {
-    var req = $(this).serializeArray().reduce(function (data, field) {
+    var req = $(this).serializeArray().reduce(function(data, field) {
       data[field.name] = field.value;
       return data;
     }, {});
     $.post({
       data: req,
-      url: '/api/task',
+      url: '/api/generate',
       success: function(res) {
-        $('img#result-preview').attr('src', res.encodedUri);
-        $('a#download-result')
-          .attr('href', res.encodedUri)
-          .attr('download', 'emoji_' + res.name);
-        setResult();
+        $.post({
+          url: '/api/rasterize',
+          data: {
+            target: res.target,
+            size: res.size,
+          },
+          success: function(res) {
+            $('img#result-preview').attr('src', res.encodedUri);
+            $('a#download-result')
+              .attr('href', res.encodedUri)
+              .attr('download', 'emoji_' + res.name);
+            setResult();
+          }
+        })
       }
     });
 

@@ -21,11 +21,11 @@ section(id='form')
                 input(type='range', id='intensity', name='intensity', min=1E-2, max=.5, step=1E-2, class='form-control')
                 output(id='intensity-val')
               div.form-group.col-lg-3.col-lg-offset-1.controls
-                label(for='options') Options
-                select(multiple=true, id='options', name='options', class='form-control')
-                  option(value='thing_1') Option 1
-                  option(value='thing_2') Option 2
-                  option(value='thing_3') Option 3
+                label(for='size') Size
+                select(id='size', name='size', class='form-control')
+                  option(value='256') 256 x 256
+                  option(value='512') 512 x 512
+                  option(value='1024') 1024 x 1024
             //- div.row.control-group
             //-   div.form-group.col-lg-6.col-lg-offset-3.controls
             //-     label(for='image') Upload Image (Preview)
@@ -44,5 +44,5 @@ section(id='form')
         div.col-xs-12
           div.result-container
             h4 
-              a(id='download-result') Click to download.
-              img(id="result-preview", height='300', width='300', type='image/png')
+              a(id='download-result', class='text-center') Click to download.
+                img(id="result-preview", height='300', width='300', type='image/png')
