@@ -77,7 +77,9 @@ router.post('/rasterize', function(req, res, next) {
             'encodedUri': 'data:image/png;base64,' + buffer.toString('base64'),
             'name': path.basename(target).replace('.svg', '')
           });
-        fs.unlink(req.target);
+        fs.unlink(target, function (e) {
+          console.log(e)
+        });
       })
   });
 });
