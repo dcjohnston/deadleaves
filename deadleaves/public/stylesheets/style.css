@@ -225,4 +225,5 @@ a.inline-a {
 div.submission-row {
   display: flex;
   justify-content: center;
+  align-items: center;
 }

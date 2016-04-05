@@ -56,10 +56,10 @@ $(function() {
       success: function(res) {
         $('button[type="submit"]').isLoading('hide');
         $('button[type="submit"]').isLoading({
-        'position': "right", // right | inside | overlay
-        'text': "Rasterizing ...", // Text to display next to the loader
-        'class': "icon-refresh", // loader CSS class
-        'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
+          'position': "right", // right | inside | overlay
+          'text': "Rasterizing ...", // Text to display next to the loader
+          'class': "icon-refresh", // loader CSS class
+          'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
         })
         $.post({
           url: '/api/rasterize',
