@@ -50,7 +50,7 @@ router.post('/generate', function(req, res, next) {
 });
 
 router.post('/rasterize', function(req, res, next) {
-  var target = path.join(__dirname, '../out', req.body.target);
+  var target = path.join(__dirname, '../out', req.body.target.replace(/g\//i, ''));
   var size = parseInt(req.body.size);
   if (path.extname(target) !== '.svg' || size > 1024) {
     next({
