@@ -28,6 +28,7 @@ $(function() {
     $('button.progress-button:first-of-type').removeClass('active');
     $('button.progress-button:last-of-type').addClass('active');
     $('div.slick-container').slick('slickGoTo', 1);
+    $('button[type="submit"]').isLoading('hide')
   }
 
   function setInitial() {
@@ -43,10 +44,23 @@ $(function() {
       data[field.name] = field.value;
       return data;
     }, {});
+    $('button[type="submit"]').isLoading({
+      'position': "right", // right | inside | overlay
+      'text': "Generating SVG ...", // Text to display next to the loader
+      'class': "icon-refresh", // loader CSS class
+      'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
+    });
     $.post({
       data: req,
       url: '/api/generate',
       success: function(res) {
+        $('button[type="submit"]').isLoading('hide');
+        $('button[type="submit"]').isLoading({
+        'position': "right", // right | inside | overlay
+        'text': "Rasterizing ...", // Text to display next to the loader
+        'class': "icon-refresh", // loader CSS class
+        'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
+        })
         $.post({
           url: '/api/rasterize',
           data: {

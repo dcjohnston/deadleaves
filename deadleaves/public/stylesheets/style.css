@@ -170,3 +170,59 @@ div.slick-track, div.slick-container, div.slick-slide {
 a.inline-a {
   margin: 0 !important;
 }
+
+.isloading-wrapper.isloading-right {
+  margin-left: 10px;
+}
+.isloading-overlay {
+  position: relative;
+  text-align: center;
+}
+.isloading-overlay .isloading-wrapper {
+  background: #FFFFFF;
+  -webkit-border-radius: 7px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 7px;
+  -moz-background-clip: padding;
+  border-radius: 7px;
+  background-clip: padding-box;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  top: 10%;
+  z-index: 9000;
+}
+
+.glyphicon.normal-right-spinner {
+    -webkit-animation: glyphicon-spin-r 2s infinite linear;
+    animation: glyphicon-spin-r 2s infinite linear;
+}
+
+@-webkit-keyframes glyphicon-spin-r {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes glyphicon-spin-r {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+div.submission-row {
+  display: flex;
+  justify-content: center;
+}
