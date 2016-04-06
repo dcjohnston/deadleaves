@@ -86,6 +86,9 @@ $(function() {
   $('div.slick-container').slick({
     draggable: false,
     arrows: false,
+    mobileFirst: true,
+    swipe: false,
+    touchMove: false,
   });
 
 });
