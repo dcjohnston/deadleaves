@@ -4,7 +4,7 @@ body {
 a {
   color: #00B7FF;
 }
-input[type=range] {
+/*input[type=range] {
   -webkit-appearance: none;
   width: 100%;
 }
@@ -30,12 +30,8 @@ input[type=range]::-webkit-slider-thumb {
   background: #ffffff;
   cursor: pointer;
   margin-top: -14px;
-  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  /* Add cool effects to your sliders! */
 }
-
-/* All the same stuff for Firefox */
 
 input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -45,11 +41,9 @@ input[type=range]::-moz-range-thumb {
   border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
-}
+}*/
 
-/* All the same stuff for IE */
-
-input[type=range]::-ms-thumb {
+/*input[type=range]::-ms-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #000000;
   height: 36px;
@@ -57,7 +51,7 @@ input[type=range]::-ms-thumb {
   border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
-}
+}*/
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
@@ -226,4 +220,8 @@ div.submission-row {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+section {
+  padding-bottom: 0px;
 }
