@@ -25,15 +25,15 @@ $(function() {
   // });
 
   function setResult() {
-    $('button.progress-button:first-of-type').removeClass('active');
-    $('button.progress-button:last-of-type').addClass('active');
+    $('button.progress-button').first().removeClass('active');
+    $('button.progress-button').last().addClass('active');
     $('div.slick-container').slick('slickGoTo', 1);
     $('button[type="submit"]').isLoading('hide')
   }
 
   function setInitial() {
-    $('button.progress-button:first-of-type').addClass('active');
-    $('button.progress-button:last-of-type').removeClass('active');
+    $('button.progress-button').first().addClass('active');
+    $('button.progress-button').last().removeClass('active');
     $('div.slick-container').slick('slickGoTo', 0);
   }
 
