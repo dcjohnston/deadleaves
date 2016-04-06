@@ -33,10 +33,16 @@ router.post('/generate', function(req, res, next) {
   var cliArguments = {
     mode: 'text',
     scriptPath: path.join(__dirname, '../python'),
-    args: ['-i', alpha, '-e'].concat(emojiIds).concat(['-o', 'out', outputDir, 'size ', size, ' ', size])
+    args: ['-i', alpha, '-e'].concat(emojiIds).concat(['-o', 'out', outputDir, 'size', size, size])
   };
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
+    if (err) {
+      next({
+        status: 500,
+        message: err
+      })
+    }
     res
       .status(201)
       .header({
