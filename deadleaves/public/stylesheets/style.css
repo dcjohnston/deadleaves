@@ -47,9 +47,8 @@ section {
 }
 
 div.result-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  display: table;
 }
 
 div.result-container a {
@@ -60,9 +59,6 @@ div.result-container img {
 }
 
 div.progress-button-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   margin-bottom: 50px;
 }
 
@@ -75,6 +71,8 @@ button.progress-button {
   border: 1px solid black;
   outline: none;
   cursor: default;
+  display: table;
+  margin: 0 auto;
 }
 
 button.progress-button.active {
@@ -153,10 +151,14 @@ a.inline-a {
     }
 }
 
-div.submission-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+div.submission-row button {
+  display: table;
+  margin: 0 auto;
+}
+
+div.emoji-container {
+  display: table;
+  margin: 0 auto;
 }
 
 section {

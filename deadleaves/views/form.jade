@@ -15,8 +15,9 @@ section(id='form')
           form(method='post', action='/api/task', id='app-form')
             div.row.control-group
               div.form-group.col-sm-3.col-sm-offset-1.col-xs-8.col-xs-offset-2
-                label(for='emoji') Emojis
-                input(type='text', id='emoji', name='emoji', class='emoji-picker', placeholder='Choose some emojis', required='true')
+                div.emoji-container
+                  label(for='emoji') Emojis
+                  input(type='text', id='emoji', name='emoji', class='emoji-picker', placeholder='Choose some emojis', required='true')
               div.form-group.col-sm-3.col-sm-offset-1.controls.col-xs-10.col-xs-offset-1
                 label(for='intensity') Intensity
                 input(type='range', id='intensity', name='intensity', min=.05, max=.5, step=1E-2, class='form-control')
