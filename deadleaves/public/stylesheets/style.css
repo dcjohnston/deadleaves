@@ -73,6 +73,7 @@ button.progress-button {
   cursor: default;
   display: table;
   margin: 0 auto;
+  text-align: center;
 }
 
 button.progress-button.active {
@@ -163,4 +164,13 @@ div.emoji-container {
 
 section {
   padding-bottom: 0px;
+}
+
+input#intensity {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.isloading-wrapper {
+  text-align: center;
 }

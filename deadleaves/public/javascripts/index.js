@@ -6,7 +6,6 @@ $(function() {
 
   $('input#intensity').change(function(ev) {
     var v = $('input#intensity').val();
-    $('output#intensity-val').val(v);
     $('#input#intensity').parent().addClass('has-success');
   });
 
@@ -44,6 +43,7 @@ $(function() {
       data[field.name] = field.value;
       return data;
     }, {});
+    req['intensity'] = .55 - req['intensity'];
     $('button[type="submit"]').isLoading({
       'position': "right", // right | inside | overlay
       'text': "Generating SVG ...", // Text to display next to the loader
