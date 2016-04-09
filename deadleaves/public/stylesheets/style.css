@@ -180,7 +180,11 @@ input#intensity {
 }
 
 a.home-link {
-  color: none;
+  color: inherit;
+}
+
+a.home-link:focus, a.home-link:hover {
+  text-decoration: none;
 }
 
 .sp-replacer {
