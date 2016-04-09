@@ -157,11 +157,6 @@ div.submission-row button {
   margin: 0 auto;
 }
 
-div.emoji-container {
-  display: table;
-  margin: 0 auto;
-}
-
 section {
   padding-bottom: 0px;
 }
@@ -201,4 +196,14 @@ div.sp-preview {
 
 .sp-dd {
   display: none;
+}
+
+/* emoji styling */
+div.emojiPickerIcon {
+  left: 0;
+  right: none;
+}
+
+input[name="emoji"] {
+  margin-left: 34px;
 }
