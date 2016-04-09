@@ -178,3 +178,17 @@ input#intensity {
 .emojiPickerIconWrap {
   display: block;
 }
+
+a.home-link {
+  color: none;
+}
+
+.sp-replacer {
+  display: block;
+  background: #FFFFFF;
+  padding: 6px;
+}
+
+div.sp-preview {
+  width: 50%;
+}

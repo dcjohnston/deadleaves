@@ -4,6 +4,15 @@ $(function() {
     width: '300px'
   });
 
+  $('input[type="color"]').spectrum({
+    replacerClassName: 'form-control',
+    change: function (color) {
+      $('input[type="color"]').val(color);
+    },
+    clickoutFiresChange: true,
+    preferredFormat: 'hex'
+  });
+
   $('input#intensity').change(function(ev) {
     var v = $('input#intensity').val();
     $('#input#intensity').parent().addClass('has-success');
@@ -27,7 +36,7 @@ $(function() {
     $('button.progress-button').first().removeClass('active');
     $('button.progress-button').last().addClass('active');
     $('div.slick-container').slick('slickGoTo', 1);
-    $('button[type="submit"]').isLoading('hide')
+    $('button[type="submit"]').isLoading('hide');
   }
 
   function setInitial() {
@@ -61,6 +70,24 @@ $(function() {
           'class': "icon-refresh", // loader CSS class
           'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
         })
+        var updateWaitMessage = setTimeout(function () {
+          $('button[type="submit"]').isLoading('hide');
+          $('button[type="submit"]').isLoading({
+            'position': "right", // right | inside | overlay
+            'text': "Working hard  ...", // Text to display next to the loader
+            'class': "icon-refresh", // loader CSS class
+            'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
+          });
+          updateWaitMessage = setTimeout(function () {
+            $('button[type="submit"]').isLoading('hide');
+            $('button[type="submit"]').isLoading({
+              'position': "right", // right | inside | overlay
+              'text': "Please allow up to 30 seconds", // Text to display next to the loader
+              'class': "icon-refresh", // loader CSS class
+              'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
+            });
+          }, 5000);
+        }, 5000);
         $.post({
           url: '/api/rasterize',
           data: {
@@ -73,6 +100,7 @@ $(function() {
               .attr('href', res.encodedUri)
               .attr('download', 'emoji_' + res.name);
             setResult();
+            clearTimeout(updateWaitMessage);
           }
         })
       }
