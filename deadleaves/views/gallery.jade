@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  div.container.main-container
+    div.row.image-container-row
+      each val in images
+        div.image-container.col-xs-12.col-md-4
+          img.gallery-image(src='/images/gallery/' + val)

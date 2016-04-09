@@ -197,3 +197,17 @@ div.sp-preview {
 .sp-dd {
   display: none;
 }
+
+div.image-container {
+  text-align: center;
+}
+
+div.image-container-row {
+  margin-bottom: 35px;
+}
+
+img.gallery-image {
+  max-width: 256px;
+  max-height: 256px;
+  margin-top: 25px;
+}
