@@ -194,5 +194,11 @@ a.home-link:focus, a.home-link:hover {
 }
 
 div.sp-preview {
-  width: 50%;
+  float: none;
+  width: auto;
+  margin-right: 0px;
+}
+
+.sp-dd {
+  display: none;
 }

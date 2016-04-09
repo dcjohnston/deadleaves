@@ -10,7 +10,8 @@ $(function() {
       $('input[type="color"]').val(color);
     },
     clickoutFiresChange: true,
-    preferredFormat: 'hex'
+    preferredFormat: 'hex',
+    showButtons: false
   });
 
   $('input#intensity').change(function(ev) {
