@@ -197,13 +197,3 @@ div.sp-preview {
 .sp-dd {
   display: none;
 }
-
-/* emoji styling */
-div.emojiPickerIcon {
-  left: 0;
-  right: none;
-}
-
-input[name="emoji"] {
-  margin-left: 34px;
-}

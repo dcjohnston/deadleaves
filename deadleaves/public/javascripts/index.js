@@ -1,5 +1,11 @@
 $(function() {
   $('input.emoji-picker').emojiPicker({
+    button: false,
+
+  });
+
+  $('input.emoji-picker').click(function(){
+    $(this).emojiPicker('toggle');
   });
 
   $('input[type="color"]').spectrum({
@@ -35,7 +41,6 @@ $(function() {
     $('button.progress-button').first().removeClass('active');
     $('button.progress-button').last().addClass('active');
     $('div.slick-container').slick('slickGoTo', 1);
-    $('button[type="submit"]').isLoading('hide');
   }
 
   function setInitial() {
@@ -47,6 +52,7 @@ $(function() {
   $('button.progress-button:first-of-type').click(setInitial);
 
   $('#app-form').submit(function(ev) {
+    // $('button[type="submit"]').addAttr('disabled');
     var req = $(this).serializeArray().reduce(function(data, field) {
       data[field.name] = field.value;
       return data;
@@ -99,6 +105,7 @@ $(function() {
               .attr('href', res.encodedUri)
               .attr('download', 'emoji_' + res.name);
             setResult();
+            // $('button[type="submit"]').removeAttr('disabled');
             clearTimeout(updateWaitMessage);
           }
         })
