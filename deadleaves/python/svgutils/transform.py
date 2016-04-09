@@ -49,10 +49,10 @@ class LineElement(FigureElement):
     def __init__(self, points, width=1, color='black'):
         linedata = "M{} {} ".format(*points[0])
         linedata += " ".join(map(lambda x: "L{} {}".format(*x), points[1:]))
-        line = etree.Element(SVG+"path", 
-                {"d": linedata, 
+        line = etree.Element(SVG+"path",
+                {"d": linedata,
                  "stroke-width":str(width),
-                 "stroke" : color}) 
+                 "stroke" : color})
         FigureElement.__init__(self, line)
 
 
@@ -66,6 +66,10 @@ class GroupElement(FigureElement):
                 new_group.append(e)
         self.root = new_group
 
+class RectElement(FigureElement):
+    def __init__(self, attrib=None):
+        new_rect = etree.Element(SVG+"rect", attrib=attrib)
+        self.root = new_rect
 
 class SVGFigure(object):
     def __init__(self, width=None, height=None):
@@ -93,7 +97,7 @@ class SVGFigure(object):
     def height(self, value):
         self.root.set('height', value)
         self.root.set("viewbox", "0 0 %s %s" % (self.width, self.height))
-    
+
     def append(self,element):
         try:
             self.root.append(element.root)

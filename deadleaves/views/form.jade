@@ -14,19 +14,23 @@ section(id='form')
         div.col-lg-8.col-lg-offset-2
           form(method='post', action='/api/task', id='app-form')
             div.row.control-group
-              div.form-group.col-sm-3.col-sm-offset-1.col-xs-8.col-xs-offset-2
+              div.form-group.col-xs-12.col-sm-6
                 div.emoji-container
                   label(for='emoji') Emojis
                   input(type='text', id='emoji', name='emoji', class='emoji-picker', placeholder='Choose some emojis', required='true')
-              div.form-group.col-sm-3.col-sm-offset-1.controls.col-xs-10.col-xs-offset-1
+              div.form-group.col-xs-12.col-sm-6
                 label(for='intensity') Fractal Depth
                 input(type='range', id='intensity', name='intensity', min=.05, max=.5, step=1E-2, class='form-control rangeOption')
-              div.form-group.col-sm-3.col-sm-offset-1.controls.col-xs-10.col-xs-offset-1
+            div.row.control-group
+              div.form-group.col-xs-12.col-sm-6
                 label(for='size') Size
                 select(id='size', name='size', class='form-control')
                   option(value='256') 256 x 256
                   option(value='512') 512 x 512
                   option(value='1024') 1024 x 1024
+              div.form-group.col-xs-12.col-sm-6
+                label(for='backgroundColor') Background Color
+                input(type='color', name='backgroundColor', class='form-control')
             //- div.row.control-group
             //-   div.form-group.col-lg-6.col-lg-offset-3.controls
             //-     label(for='image') Upload Image (Preview)

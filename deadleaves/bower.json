@@ -21,6 +21,7 @@
     "jquery-emoji-picker": "~0.2.0",
     "font-awesome": "fontawesome#~4.5.0",
     "jquery-loading-overlay": "~1.0.2",
-    "is-loading": "~1.0.6"
+    "is-loading": "~1.0.6",
+    "spectrum": "~1.8.0"
   }
 }

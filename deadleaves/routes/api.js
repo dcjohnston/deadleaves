@@ -18,6 +18,7 @@ router.post('/generate', function(req, res, next) {
     emojishorts = emojione.toShort(post.emoji).split('::'),
     alpha = parseFloat(post.intensity),
     size = parseInt(post.size),
+    color = post.backgroundColor,
     emojiIds = emojis.match(/(?:\/([a-z, 0-9]*\.svg))/g).map(function(id) {
       return path.join(__dirname, '../node_modules/emojione/assets/svg', id);
     }),
@@ -33,7 +34,7 @@ router.post('/generate', function(req, res, next) {
   var cliArguments = {
     mode: 'text',
     scriptPath: path.join(__dirname, '../python'),
-    args: ['-i', alpha, '-e'].concat(emojiIds).concat(['-o', 'out', outputDir, 'size', size, size])
+    args: ['-i', alpha, '-h', post.backgroundColor, '-e'].concat(emojiIds).concat(['-o', 'out', outputDir, 'size', size, size])
   };
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {

@@ -174,3 +174,7 @@ input#intensity {
 .isloading-wrapper {
   text-align: center;
 }
+
+.emojiPickerIconWrap {
+  display: block;
+}
