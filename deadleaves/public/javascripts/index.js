@@ -1,11 +1,20 @@
 $(function() {
+
+  $('div.slick-container').slick({
+    draggable: false,
+    arrows: false,
+    mobileFirst: true,
+    swipe: false,
+    touchMove: false,
+  });
+
   $('input.emoji-picker').emojiPicker({
     button: false,
   });
 
   $('input.emoji-picker').click(function(){
     $(this).emojiPicker('toggle');
-  });
+  })  ;
 
   $('input[type="color"]').spectrum({
     replacerClassName: 'form-control',
@@ -53,6 +62,7 @@ $(function() {
       return data;
     }, {});
     req['intensity'] = .55 - req['intensity'];
+    $('button[type="submit"]').prop('disabled', true);
     $('button[type="submit"]').isLoading({
       'position': "right", // right | inside | overlay
       'text': "Generating SVG ...", // Text to display next to the loader
@@ -70,6 +80,7 @@ $(function() {
           'class': "icon-refresh", // loader CSS class
           'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
         })
+        $('button[type="submit"]').prop('disabled', true);
         var updateWaitMessage = setTimeout(function () {
           $('button[type="submit"]').isLoading('hide');
           $('button[type="submit"]').isLoading({
@@ -78,6 +89,7 @@ $(function() {
             'class': "icon-refresh", // loader CSS class
             'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
           });
+          $('button[type="submit"]').prop('disabled', true);
           updateWaitMessage = setTimeout(function () {
             $('button[type="submit"]').isLoading('hide');
             $('button[type="submit"]').isLoading({
@@ -86,6 +98,7 @@ $(function() {
               'class': "icon-refresh", // loader CSS class
               'tpl': '<div class="isloading-wrapper %wrapper%">%text%<span class="glyphicon glyphicon-repeat normal-right-spinner"></span></div>',
             });
+            $('button[type="submit"]').prop('disabled', true);
           }, 5000);
         }, 5000);
         $.post({
@@ -96,12 +109,13 @@ $(function() {
             height: res.height,
           },
           success: function(res) {
+            $('button[type="submit"]').prop('disabled', false);
             $('img#result-preview').attr('src', res.encodedUri);
             $('a#download-result')
               .attr('href', res.encodedUri)
               .attr('download', 'emoji_' + res.name);
             setResult();
-            // $('button[type="submit"]').removeAttr('disabled');
+            $('button[type="submit"]').isLoading('hide');
             clearTimeout(updateWaitMessage);
           }
         })
@@ -111,14 +125,6 @@ $(function() {
     ev.preventDefault();
     ev.stopPropagation();
     return false;
-  });
-
-  $('div.slick-container').slick({
-    draggable: false,
-    arrows: false,
-    mobileFirst: true,
-    swipe: false,
-    touchMove: false,
   });
 
 });
