@@ -211,3 +211,9 @@ img.gallery-image {
   max-height: 256px;
   margin-top: 25px;
 }
+
+img.result-preview-image {
+  height: auto;
+  width: 300px;
+
+}

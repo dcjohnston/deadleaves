@@ -1,7 +1,6 @@
 $(function() {
   $('input.emoji-picker').emojiPicker({
     button: false,
-
   });
 
   $('input.emoji-picker').click(function(){
@@ -18,15 +17,8 @@ $(function() {
     showButtons: false
   });
 
-  $('input#intensity').change(function(ev) {
-    var v = $('input#intensity').val();
-    $('#input#intensity').parent().addClass('has-success');
-  });
-
   $('select#size')[0].add(new Option(screen.width + ' x ' + screen.height + ' (Screen Dimensions)',
     screen.width + 'x' + screen.height, true, true));
-
-  $('input#intensity').trigger('change');
 
   // $('#image').change(function(ev) {
   //   var target = this.files[0];
