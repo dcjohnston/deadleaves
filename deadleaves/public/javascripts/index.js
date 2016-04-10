@@ -23,6 +23,9 @@ $(function() {
     $('#input#intensity').parent().addClass('has-success');
   });
 
+  $('select#size')[0].add(new Option(screen.width + ' x ' + screen.height + ' (Screen Dimensions)',
+    screen.width + 'x' + screen.height, true, true));
+
   $('input#intensity').trigger('change');
 
   // $('#image').change(function(ev) {
@@ -97,7 +100,8 @@ $(function() {
           url: '/api/rasterize',
           data: {
             target: res.target,
-            size: res.size,
+            width: res.width,
+            height: res.height,
           },
           success: function(res) {
             $('img#result-preview').attr('src', res.encodedUri);
