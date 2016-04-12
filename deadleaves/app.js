@@ -24,12 +24,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
-app.use('/', express.static(path.join(__dirname, 'public')));
+
+//replace express static w/ apache rev proxy
+// app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
+// app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api', api);
-app.use('/users', users);
+// app.use('/users', users);
 
 
 // catch 404 and forward to error handler
@@ -43,7 +45,6 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    console.log(err);
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
