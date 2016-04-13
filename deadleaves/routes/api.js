@@ -4,11 +4,8 @@ var express = require('express'),
   emojione = require('emojione'),
   path = require('path'),
   router = express.Router(),
-  Parametrize = require('../image_utils/parametrize'),
   PythonShell = require('python-shell'),
-  svg2png = require('svg2png'),
-  streamifier = require('streamifier'),
-  ScaleImage = require('../image_utils/scale_svg');
+  svg2png = require('svg2png');
 
 emojione.imageType = 'svg';
 
