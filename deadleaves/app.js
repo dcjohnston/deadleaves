@@ -40,6 +40,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+//If you pass anything to the next() function (except the string 'route'), Express regards the current request as being in error and will skip any remaining non-error handling routing and middleware functions. If you want to handle that error in some way, you’ll have to create an error-handling route as described in the next section.
 
 // development error handler
 // will print stacktrace
