@@ -60,6 +60,7 @@ div.result-container img {
 
 div.progress-button-container {
   margin-bottom: 50px;
+  cursor: pointer;
 }
 
 button.progress-button {
