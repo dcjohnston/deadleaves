@@ -20,7 +20,7 @@
     "python-shell": "^0.4.0",
     "serve-favicon": "~2.3.0",
     "stream-buffers": "^3.0.0",
-    "svg2png": "^3.0.0",
+    "svg2png": "^3.0.0"
   },
   "devDependencies": {
     "debug": "^2.2.0",
