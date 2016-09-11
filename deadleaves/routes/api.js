@@ -5,8 +5,7 @@ var express = require('express'),
   path = require('path'),
   router = express.Router(),
   PythonShell = require('python-shell'),
-  Rsvg = require('librsvg').Rsvg,
-  svg2png = require('svg2png');
+  Rsvg = require('librsvg').Rsvg;
 
 emojione.imageType = 'svg';
 
