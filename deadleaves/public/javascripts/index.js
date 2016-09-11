@@ -14,7 +14,7 @@ $(function() {
 
   $('input.emoji-picker').click(function(){
     $(this).emojiPicker('toggle');
-  })  ;
+  });
 
   $('input[type="color"]').spectrum({
     replacerClassName: 'form-control',
@@ -53,7 +53,7 @@ $(function() {
     $('div.slick-container').slick('slickGoTo', 0);
   }
 
-  $('button.progress-button:first-of-type').click(setInitial);
+  $('button.progress-button.first').click(setInitial);
 
   $('#app-form').submit(function(ev) {
     // $('button[type="submit"]').addAttr('disabled');
