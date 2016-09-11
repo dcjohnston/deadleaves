@@ -38,7 +38,6 @@ router.post('/generate', function(req, res, next) {
   };
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
-    console.log("ERROR:", err)
     if (err) {
       next({
         status: 500,
