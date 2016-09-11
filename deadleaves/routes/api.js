@@ -38,22 +38,24 @@ router.post('/generate', function(req, res, next) {
   };
 
   PythonShell.run('makeSVG.py', cliArguments, function(err, results) {
+    console.log("ERROR:", err)
     if (err) {
       next({
         status: 500,
         message: err
       })
+    } else {
+      res
+        .status(201)
+        .header({
+          'Content-Type': 'application/json',
+        })
+        .send({
+          'target': path.basename(results[0]),
+          'width': width,
+          'height': height
+        });
     }
-    res
-      .status(201)
-      .header({
-        'Content-Type': 'application/json',
-      })
-      .send({
-        'target': path.basename(results[0]),
-        'width': width,
-        'height': height
-      });
   });
 });
 

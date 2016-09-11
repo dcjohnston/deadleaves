@@ -60,13 +60,13 @@ div.result-container img {
 
 div.progress-button-container {
   margin-bottom: 50px;
-  cursor: pointer;
 }
 
 button.progress-button {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
   font-size: 2em;
   background: none;
   border: 1px solid black;
