@@ -5,6 +5,7 @@ var express = require('express'),
   path = require('path'),
   router = express.Router(),
   PythonShell = require('python-shell'),
+  Rsvg = require('librsvg').Rsvg,
   svg2png = require('svg2png');
 
 emojione.imageType = 'svg';
@@ -68,29 +69,23 @@ router.post('/rasterize', function(req, res, next) {
       message: "Invalid Request"
     })
   }
-  fs.readFile(target, function(e, d) {
-    if (e) {
-      next({
-        status: 500,
-        message: "Something went wrong"
-      });
-    }
-    svg2png(d, {
-        width: width,
-        height: height
+  var svg = new Rsvg();
+  svg.on('finish', function () {
+    var buffer = svg.render({
+      format: 'png',
+      width: width,
+      height: height
+    }).data
+    res.header({
+        'Content-Type': 'application/json',
       })
-      .then(function(buffer) {
-        res.header({
-            'Content-Type': 'application/json',
-          })
-          .send({
-            'encodedUri': 'data:image/png;base64,' + buffer.toString('base64'),
-            'name': path.basename(target).replace('.svg', '')
-          });
-        fs.unlink(target, function (e) {
-        });
-      })
-  });
+    .send({
+      'encodedUri': 'data:image/png;base64,' + buffer.toString('base64'),
+      'name': path.basename(target).replace('.svg', '')
+    });
+    fs.unlink(target)
+  })
+  fs.createReadStream(target).pipe(svg);
 });
 
 module.exports = router;

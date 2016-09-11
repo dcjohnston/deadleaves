@@ -127,7 +127,7 @@ def scaleEmojis(emojis,alpha=0.01,xmin=0.01,xLim=100,yLim=100):
 def getN(alpha):
     """assumes each element has diameter equal to scale, which isn't really true,
     but the approximation actually works fairly well"""
-    return int((alpha**-1)*(10**3.1))
+    return int((alpha**-1)*(10**3.5))
 
 def getAlpha(intensity):
     """in case we decide to use a different scale for intensity"""
