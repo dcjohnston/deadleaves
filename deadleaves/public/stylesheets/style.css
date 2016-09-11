@@ -97,7 +97,8 @@ button.progress-button {
 }
 
 p.progress-subtext {
-  font-size: .9em;
+  font-size: .95em;
+  font-weight: bold;
   text-align: center;
   margin-top: 10px;
 }
