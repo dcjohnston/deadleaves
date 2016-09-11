@@ -1,15 +1,13 @@
 section(id='form')
   div.row
     div.col-xs-4.col-xs-offset-2.progress-button-container
-      button.progress-button.active
+      button.progress-button.first.active
+      p.progress-subtext Create
     div.col-xs-4.progress-button-container
       button.progress-button
+      p.progress-subtext Download
   div.slick-container
     div.container.form-container
-      div.row
-        div.col-lg-12.text-center
-          h2 Create
-          hr.start-primary
       div.row
         div.col-lg-8.col-lg-offset-2
           form(method='post', action='/api/task', id='app-form')
@@ -41,10 +39,6 @@ section(id='form')
                 button(type='submit', class='btn btn-success btn-lg') Make!
             hr.start-light
     div.container.result-preview
-      div.row
-        div.col-lg-12.text-center
-          h2 Review & Download
-          hr.start-primary
       div.row
         div.col-xs-12
           div.result-container

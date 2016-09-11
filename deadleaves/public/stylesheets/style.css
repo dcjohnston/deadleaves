@@ -62,6 +62,26 @@ div.progress-button-container {
   margin-bottom: 50px;
 }
 
+button.progress-button.first:after {
+  content: "";
+  border-bottom: 2px solid black;
+  position: absolute;
+  width: 50%;
+  height: 1px;
+  left: 50%;
+  margin-left: 15px;
+}
+
+button.progress-button:not(.first):before {
+  content: "";
+  border-bottom: 2px solid black;
+  position: absolute;
+  width: 50%;
+  height: 1px;
+  left: 0%;
+  margin-left: -15px;
+}
+
 button.progress-button {
   border-radius: 50%;
   cursor: pointer;
@@ -71,14 +91,20 @@ button.progress-button {
   background: none;
   border: 1px solid black;
   outline: none;
-  cursor: default;
   display: table;
   margin: 0 auto;
   text-align: center;
 }
 
+p.progress-subtext {
+  font-size: .9em;
+  text-align: center;
+  margin-top: 10px;
+}
+
 button.progress-button.active {
   box-shadow: 0px 0px 40px 0px #18bc9c;
+  cursor: default;
 }
 
 ul.my-nav {

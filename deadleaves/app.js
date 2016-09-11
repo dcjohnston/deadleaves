@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //replace express static w/ apache rev proxy
-// app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
-// app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api', api);
