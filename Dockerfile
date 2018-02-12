@@ -14,3 +14,5 @@ RUN npm install && bower install --allow-root
 RUN ln -s /usr/local/bin/pip2.7 /usr/local/bin/pip
 
 RUN pip install -r requirements.txt
+
+CMD node /opt/deadleaves/bin/www
